@@ -1,10 +1,30 @@
-import { Post } from '../entity/Post';
+import { UserController } from './UserController';
+import { Post as PostEntiy } from '../entity/Post';
 import { getManager } from 'typeorm';
-export class PostController{
+import { JsonController,  Body, Post, NotFoundError } from 'routing-controllers';
+import { UserService } from '../service/UserService';
+import { User } from '../entity/User';
+import { PostService } from '../service/PostService';
 
-    async save(post: Post){
-        const postP  = await getManager().save(post);
-        return postP;
+const userService : UserService = new UserService();
+const postService : PostService = new PostService();
+
+export interface IPostPayload {
+    userId: number;
+    date: Date;
+    description: string;
+}
+
+@JsonController()
+export class PostController{
+    
+    @Post('/post')
+    async save(@Body() postDTO: IPostPayload){
+        const user : User = await userService.getById(postDTO.userId);
+        if(!user){
+            throw new NotFoundError(`User was not found.`);
+        }
+        return postService.save(postDTO,user);
     }
 
 }
