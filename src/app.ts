@@ -3,6 +3,7 @@ import * as cors from "cors";
 import * as logger from "morgan";
 import {connect} from './config/db';
 import { userRouter } from './routes/usuario';
+import { postRouter } from './routes/post';
 
 //Create aplication
 export const app = express();
@@ -27,7 +28,8 @@ app.use(logger('dev'));
 */
 connect();
 
-app.use('/usuario', userRouter);
+app.use('/user', userRouter);
+app.use('/post', postRouter);
 app.use('/', (req, res) => res.send('API'));
 
 
