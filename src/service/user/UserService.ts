@@ -1,6 +1,6 @@
-import { User } from '../entity/User';
-import { Post } from "../entity/Post";
-import { UserRepository } from '../repository/UserRepository';
+import { User } from '../../entity/user/User';
+import { Post } from "../../entity/post/Post";
+import { UserRepository } from '../../repository/user/UserRepository';
 
 const repository : UserRepository = new UserRepository();
 

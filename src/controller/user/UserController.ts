@@ -1,8 +1,8 @@
 
-import { User } from '../entity/User';
+import { User } from '../../entity/user/User';
 import { JsonController, Param, Body, Get, Post, NotFoundError } from 'routing-controllers';
-import { UserService } from '../service/UserService';
-import { Post as PostEntity } from '../entity/Post';
+import { UserService } from '../../service/user/UserService';
+import { Post as PostEntity } from '../../entity/post/Post';
 
 const service : UserService = new UserService(); 
 

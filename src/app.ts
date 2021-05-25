@@ -6,7 +6,7 @@ import { createExpressServer } from 'routing-controllers';
 //Create aplication
 console.log(__dirname + '/controllers/*.ts');
 export const app = createExpressServer({
-    controllers: [__dirname + '/controller/*.ts'] // we specify controllers we want to use
+    controllers: [__dirname + '/controller/**/*.ts'] // we specify controllers we want to use
   });
   
 /*

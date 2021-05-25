@@ -1,7 +1,7 @@
-import { Post } from '../entity/Post';
-import { User } from '../entity/User';
-import { PostRepository } from '../repository/PostRepository';
-import { PostDTO } from '../dto/PostDTO';
+import { Post } from '../../entity/post/Post';
+import { User } from '../../entity/user/User';
+import { PostRepository } from '../../repository/post/PostRepository';
+import { PostDTO } from '../../dto/post/PostDTO';
 
 const repository : PostRepository = new PostRepository();
 

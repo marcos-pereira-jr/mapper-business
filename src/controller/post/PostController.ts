@@ -1,11 +1,8 @@
-import { UserController } from './UserController';
-import { Post as PostEntiy } from '../entity/Post';
-import { getManager } from 'typeorm';
 import { JsonController,  Body, Post, NotFoundError } from 'routing-controllers';
-import { UserService } from '../service/UserService';
-import { User } from '../entity/User';
-import { PostService } from '../service/PostService';
-import { PostDTO } from '../dto/PostDTO';
+import { UserService } from '../../service/user/UserService';
+import { User } from '../../entity/user/User';
+import { PostService } from '../../service/post/PostService';
+import { PostDTO } from '../../dto/post/PostDTO';
 
 const userService : UserService = new UserService();
 const postService : PostService = new PostService();

@@ -1,6 +1,6 @@
 import { getManager } from "typeorm";
-import { User } from '../entity/User';
-import { Post } from '../entity/Post';
+import { User } from '../../entity/user/User';
+import { Post } from '../../entity/post/Post';
 
 export class UserRepository {
 
