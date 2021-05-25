@@ -1,27 +1,24 @@
-import { getManager } from "typeorm";
 import { User } from '../entity/User';
 import { Post } from "../entity/Post";
+import { UserRepository } from '../repository/UserRepository';
 
+const repository : UserRepository = new UserRepository();
 
 export class UserService {
 
     async listAll() : Promise<User[]> {
-        const users: User[]  = await getManager().find(User);
-        return  users;
+        return await repository.listAll();
     } 
 
     async getById(id:number): Promise<User>{
-        return await getManager().findOne(User,id);
+        return await repository.getById(id);
     }
 
     async save(user: User): Promise<User>{
-       return await getManager().save(user);
+       return await repository.save(user);
     } 
 
     async getPosts(id:number):Promise<Post[]>{
-        const user = await getManager().findOne(User,id,{
-            relations: ['posts']
-        });
-        return user.posts;
+        return await repository.getPosts(id);
     }
 }
