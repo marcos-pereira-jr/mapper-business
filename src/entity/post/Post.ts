@@ -1,11 +1,11 @@
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
-import { User } from './User';
+import { User } from '../user/User';
 
 @Entity()
 export class Post {
-  constructor(description: String, data: Date, user : User) {
+  constructor(description: String, date: Date, user : User) {
     this.description = description
-    this.data = data
+    this.date = date
     this.user = user
   } 
 
@@ -15,9 +15,8 @@ export class Post {
     @Column()
     description: String;
 
-
     @Column()
-    data: Date;
+    date: Date;
 
     @ManyToOne(()=> User)
     user: User;
