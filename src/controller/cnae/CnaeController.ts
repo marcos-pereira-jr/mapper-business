@@ -1,7 +1,10 @@
 
-import { JsonController, UploadedFile,Post } from 'routing-controllers';;
+import { JsonController, UploadedFile,Post, Get } from 'routing-controllers';;
 import { FileService } from '../../service/file/FileService';
 import { CnaeService } from '../../service/cnae/CnaeService';
+import { CrudController } from '../generic/GenericController';
+import { CnaeDTO } from '../../dto/cnae/CnaeDTO';
+import { Cnae } from '../../entity/cnae/Cnae';
 
 
 const fileService : FileService = new FileService();
@@ -9,7 +12,11 @@ const cnaeService : CnaeService = new CnaeService();
 const  moment = require('moment');
 
 @JsonController("/cnae")
-export class CnaeController{
+export class CnaeController extends CrudController<Cnae,CnaeDTO>{
+
+    constructor(){
+        super(cnaeService);
+    }
 
     @Post('/import')
     async uploadPhoto( @UploadedFile('file') file: any) {
