@@ -2,7 +2,7 @@
 import { JsonController, UploadedFile,Post, Get } from 'routing-controllers';;
 import { FileService } from '../../service/file/FileService';
 import { CnaeService } from '../../service/cnae/CnaeService';
-import { CrudController } from '../generic/GenericController';
+import { CrudController } from '../generic/CrudController';
 import { CnaeDTO } from '../../dto/cnae/CnaeDTO';
 import { Cnae } from '../../entity/cnae/Cnae';
 import { CnaeRepository } from '../../repository/cnae/CnaeRepository';
@@ -13,7 +13,7 @@ const cnaeService : CnaeService = new CnaeService(new CnaeRepository(Cnae));
 const  moment = require('moment');
 
 @JsonController("/cnae")
-export class CnaeController extends CrudController<Cnae,CnaeDTO>{
+export class CnaeController extends CrudController<Cnae>{
 
     constructor(){
         super(cnaeService);
