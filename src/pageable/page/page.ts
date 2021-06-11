@@ -1,5 +1,5 @@
-export class Page<Any> {
-    content : Any[];
+export class Page<T> {
+    content : T[];
     page: number;
     size: number;
 }
