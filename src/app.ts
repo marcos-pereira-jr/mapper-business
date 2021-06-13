@@ -5,7 +5,8 @@ import { createExpressServer } from 'routing-controllers';
 
 //Create aplication
 console.log(__dirname + '/controllers/*.ts');
-export const app = createExpressServer({
+export const getApp = () => {
+  const app  = createExpressServer({
     controllers: [__dirname + '/controller/**/*.ts'] // we specify controllers we want to use
   });
   
@@ -26,7 +27,5 @@ app.use(express.json());
 */
 app.use(logger('dev'));
 
-/* 
-    Connect BD
-*/
-connect();
+return app;
+}
