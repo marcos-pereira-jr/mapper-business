@@ -1,5 +1,6 @@
 import { PageRequest } from '../../pageable/pageable/PageRequest';
 import { CrudRepository } from '../../repository/generic/CrudRepository';
+import { Page } from '../../pageable/page/page';
 
 export class CrudService<ENTITY>{
     
@@ -9,7 +10,7 @@ export class CrudService<ENTITY>{
        this.repository = repository;
     }
 
-    async listAll(pageRequest : PageRequest): Promise<ENTITY[]>{
+    async listAll(pageRequest : PageRequest): Promise<Page<ENTITY>>{
         return await this.repository.listAll(pageRequest);
     }
 

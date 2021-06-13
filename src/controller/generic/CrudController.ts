@@ -1,6 +1,7 @@
 import { Get, Param, QueryParams, Body,Post, Put } from 'routing-controllers';
 import { CrudService } from '../../service/generic/CrudService';
 import { PageRequest } from '../../pageable/pageable/PageRequest';
+import { Page } from '../../pageable/page/page';
 export class CrudController<ENTITY>{
     
     protected service : CrudService<ENTITY>
@@ -10,7 +11,7 @@ export class CrudController<ENTITY>{
     }
 
     @Get()
-    async listAll(@QueryParams() pageRequest : PageRequest): Promise<ENTITY[]>{
+    async listAll(@QueryParams() pageRequest : PageRequest): Promise<Page<ENTITY>>{
        return await this.service.listAll(pageRequest);
     }
 

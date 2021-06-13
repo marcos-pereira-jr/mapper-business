@@ -1,5 +1,6 @@
 import { getManager } from 'typeorm';
 import { PageRequest } from '../../pageable/pageable/PageRequest';
+import { Page } from '../../pageable/page/page';
 
 export type ObjectType<T> = { new (): T } | Function;
 
@@ -13,8 +14,9 @@ export class CrudRepository<T>{
         this.repository= getManager().getRepository(this.type);   
     }
 
-    async listAll(pageRequest: PageRequest) : Promise<T[]>{
-        return await this.repository.findAndCount(pageRequest.getQuery());
+    async listAll(pageRequest: PageRequest) : Promise<Page<T>>{
+        const [result, total] =  await this.repository.findAndCount(pageRequest.getQuery());
+        return new Page(result,pageRequest.page,total);  
     }
 
     async save(entity: T) : Promise<T>  {
