@@ -14,7 +14,7 @@ export class PageRequest {
     private _size : number
 
     public get page(): number {
-        return this._page || this._defaultSize;
+        return this._page || this._defaultPage;
     }
 
     public set page(page: number) {
@@ -22,7 +22,7 @@ export class PageRequest {
     }
 
     public get size(): number {
-        return this._size;
+        return this._size || this._defaultSize;
     }
 
     public set size(size: number) {
