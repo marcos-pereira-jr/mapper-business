@@ -16,7 +16,7 @@ export class CrudRepository<T>{
 
     async listAll(pageRequest: PageRequest) : Promise<Page<T>>{
         const [result, total] =  await this.repository.findAndCount(pageRequest.getQuery());
-        return new Page(result,pageRequest.page,total);  
+        return new Page(result,pageRequest.page,total,pageRequest.size);  
     }
 
     async save(entity: T) : Promise<T>  {
